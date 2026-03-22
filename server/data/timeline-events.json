@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "year": 1947,
+    "title": "Kenneth Arnold Sighting",
+    "tag": "civilian",
+    "description": "Private pilot Kenneth Arnold reports nine crescent-shaped objects near Mt. Rainier, WA. A journalist coins the term 'flying saucer'. The modern UFO era begins."
+  },
+  {
+    "id": 2,
+    "year": 1947,
+    "title": "Roswell Incident",
+    "tag": "military",
+    "description": "RAAF public affairs announces recovery of a 'flying disc' near Roswell, NM. The Army retracted the statement within 24 hours, claiming it was a weather balloon. Remains the most debated UAP case in history."
+  },
+  {
+    "id": 3,
+    "year": 1952,
+    "title": "Washington D.C. Flap — Project Blue Book",
+    "tag": "military",
+    "description": "UFOs appear on radar at Washington National Airport and Andrews AFB. Interceptors scrambled. Project Blue Book, the Air Force's official UAP investigation, ramps up in response."
+  },
+  {
+    "id": 4,
+    "year": 1969,
+    "title": "Project Blue Book Closed",
+    "tag": "government",
+    "description": "The USAF officially closes Project Blue Book after investigating 12,618 sightings. 701 remain 'unidentified'. The Condon Report recommends ending Air Force UFO investigations."
+  },
+  {
+    "id": 5,
+    "year": 1989,
+    "title": "Belgian UFO Wave",
+    "tag": "military",
+    "description": "Over 13,500 people including police and military personnel report large triangular craft across Belgium. The Belgian Air Force scrambles F-16s and confirms radar lock on unknown objects."
+  },
+  {
+    "id": 6,
+    "year": 1997,
+    "title": "Phoenix Lights",
+    "tag": "civilian",
+    "description": "Thousands of Arizona residents report a massive V-shaped craft up to a mile wide moving silently over Phoenix. Witnessed by Governor Fife Symington, who later admitted he saw it himself."
+  },
+  {
+    "id": 7,
+    "year": 2004,
+    "title": "USS Nimitz Incident",
+    "tag": "military",
+    "description": "Navy F/A-18F pilots intercept a 'Tic-Tac' shaped object off the California coast. The object demonstrated instantaneous acceleration, no visible propulsion, and defiance of known aerodynamics. Cmdr. David Fravor reported the encounter."
+  },
+  {
+    "id": 8,
+    "year": 2017,
+    "title": "NYT / AATIP Disclosure",
+    "tag": "government",
+    "description": "The New York Times reveals the Pentagon's secret Advanced Aerospace Threat Identification Program (AATIP), run by Luis Elizondo. Declassified UAP videos (Nimitz, Gimbal, GoFast) published for first time."
+  },
+  {
+    "id": 9,
+    "year": 2019,
+    "title": "Navy Officially Acknowledges UAP Videos",
+    "tag": "military",
+    "description": "The US Navy officially confirms the three released UAP videos are authentic and depict unidentified aerial phenomena. A formal UAP reporting process is established for Navy pilots."
+  },
+  {
+    "id": 10,
+    "year": 2021,
+    "title": "DNI UAP Preliminary Assessment",
+    "tag": "government",
+    "description": "The Director of National Intelligence releases an unclassified UAP report to Congress. Of 144 reports, only one could be explained. The remaining 143 are 'unresolved' — a landmark shift in official posture."
+  },
+  {
+    "id": 11,
+    "year": 2022,
+    "title": "AARO Established",
+    "tag": "government",
+    "description": "The All-domain Anomaly Resolution Office (AARO) is established within the Department of Defense as the central UAP investigation body, with a mandate to coordinate across military and intelligence agencies."
+  },
+  {
+    "id": 12,
+    "year": 2023,
+    "title": "Congressional UAP Hearings",
+    "tag": "congressional",
+    "description": "The House Oversight Committee holds the first major congressional UAP hearing since 1966. Witnesses including David Grusch, Ryan Graves, and Cmdr. David Fravor testify under oath about non-human intelligence and crash retrieval programs."
+  },
+  {
+    "id": 13,
+    "year": 2024,
+    "title": "AARO Historical Record Volume 1",
+    "tag": "government",
+    "description": "AARO releases its first Historical Record Report, examining over 70 years of UAP claims including alleged crash retrieval and reverse-engineering programs. Finds no verifiable evidence of extraterrestrial craft — but acknowledges significant classification barriers."
+  }
+]

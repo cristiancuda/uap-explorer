@@ -1,0 +1,22 @@
+[
+  { "name": "Edwards Air Force Base", "branch": "USAF", "lat": 34.9054, "lon": -117.8837 },
+  { "name": "Nellis Air Force Base", "branch": "USAF", "lat": 36.2361, "lon": -115.034 },
+  { "name": "Area 51 / Groom Lake", "branch": "USAF / CIA", "lat": 37.2431, "lon": -115.8101 },
+  { "name": "Wright-Patterson AFB", "branch": "USAF", "lat": 39.8261, "lon": -84.0483 },
+  { "name": "Eglin Air Force Base", "branch": "USAF", "lat": 30.4655, "lon": -86.5251 },
+  { "name": "Langley Air Force Base", "branch": "USAF", "lat": 37.0827, "lon": -76.3606 },
+  { "name": "Holloman AFB", "branch": "USAF", "lat": 32.8523, "lon": -106.1075 },
+  { "name": "Kirtland AFB", "branch": "USAF", "lat": 35.0494, "lon": -106.5688 },
+  { "name": "NAS Fallon", "branch": "US Navy", "lat": 39.4167, "lon": -118.7 },
+  { "name": "NAS Oceana", "branch": "US Navy", "lat": 36.8207, "lon": -76.0336 },
+  { "name": "NAS Patuxent River", "branch": "US Navy", "lat": 38.2849, "lon": -76.4118 },
+  { "name": "China Lake NAWS", "branch": "US Navy", "lat": 35.6854, "lon": -117.6796 },
+  { "name": "Fort Bragg (Liberty)", "branch": "US Army", "lat": 35.1393, "lon": -79.0063 },
+  { "name": "Fort Benning (Moore)", "branch": "US Army", "lat": 32.3574, "lon": -84.9935 },
+  { "name": "Davis-Monthan AFB", "branch": "USAF", "lat": 32.1665, "lon": -110.8831 },
+  { "name": "Minot AFB", "branch": "USAF", "lat": 48.4156, "lon": -101.3578 },
+  { "name": "Malmstrom AFB", "branch": "USAF", "lat": 47.5082, "lon": -111.1868 },
+  { "name": "F.E. Warren AFB", "branch": "USAF", "lat": 41.1448, "lon": -104.8691 },
+  { "name": "RAF Bentwaters (disused)", "branch": "Former USAF/RAF", "lat": 52.1274, "lon": 1.4413 },
+  { "name": "RAF Lakenheath", "branch": "USAF / RAF", "lat": 52.4094, "lon": 0.5601 }
+]

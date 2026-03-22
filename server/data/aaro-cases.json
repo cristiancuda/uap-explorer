@@ -1,0 +1,62 @@
+[
+  {
+    "id": "nimitz",
+    "year": 2004,
+    "title": "USS Nimitz / Tic-Tac",
+    "location": "Pacific Ocean, ~100 nm SW of San Diego, CA",
+    "classification": "UNRESOLVED",
+    "summary": "Navy F/A-18F pilots from VFA-41 intercept a 40-foot white Tic-Tac-shaped object with no visible propulsion, wings, or exhaust. It demonstrated instantaneous acceleration from 28,000 ft to sea-level and back. Princeton's SPY-1 radar had been tracking these objects for two weeks prior.",
+    "witnesses": ["Cmdr. David Fravor", "Lt. Cmdr. Jim Slaight", "Multiple radar operators"],
+    "evidence": ["FLIR1 video (declassified 2017)", "Radar logs", "Multiple pilot testimony"]
+  },
+  {
+    "id": "gimbal",
+    "year": 2015,
+    "title": "Gimbal",
+    "location": "US East Coast, Atlantic Ocean",
+    "classification": "UNRESOLVED",
+    "summary": "USS Theodore Roosevelt carrier group pilots film a rotating, oblong UAP moving against the wind with no visible propulsion. The object appears to rotate in a manner inconsistent with any known aircraft. Published by NYT in 2017.",
+    "witnesses": ["Multiple F/A-18 pilots", "USS Princeton radar crew"],
+    "evidence": ["Gimbal FLIR video (declassified)", "Pilot testimony"]
+  },
+  {
+    "id": "gofast",
+    "year": 2015,
+    "title": "GoFast",
+    "location": "US East Coast, Atlantic Ocean",
+    "classification": "UNRESOLVED",
+    "summary": "A fast-moving UAP tracked over ocean surface by F/A-18 ATFLIR pod. Analysis suggests the object was traveling at extraordinary speed at very low altitude with no discernible wake or propulsion signature.",
+    "witnesses": ["USS Theodore Roosevelt pilots"],
+    "evidence": ["GoFast FLIR video (declassified)", "Targeting pod telemetry"]
+  },
+  {
+    "id": "ruwa",
+    "year": 1994,
+    "title": "Ariel School, Ruwa Zimbabwe",
+    "location": "Ruwa, Zimbabwe",
+    "classification": "UNRESOLVED",
+    "summary": "62 schoolchildren reported a craft landing on school grounds during recess. Children independently described occupants and received what they interpreted as telepathic warnings about environmental destruction. Harvard psychiatrist Dr. John Mack conducted months-long interviews and found no evidence of fabrication.",
+    "witnesses": ["62 children (ages 6-12)", "Teachers"],
+    "evidence": ["Dr. John Mack interviews", "Children's drawings (consistent)", "BBC documentary footage"]
+  },
+  {
+    "id": "lubbock",
+    "year": 1951,
+    "title": "Lubbock Lights",
+    "location": "Lubbock, TX",
+    "classification": "UNRESOLVED",
+    "summary": "Three Texas Tech professors simultaneously observe a V-formation of soft blue-green lights passing overhead at high speed. Multiple subsequent sightings photographed by student Carl Hart Jr. Project Blue Book investigated and classified the photos as authentic but offered no explanation.",
+    "witnesses": ["3 Texas Tech professors", "Carl Hart Jr. (photographer)", "Multiple civilians"],
+    "evidence": ["Hart photographs (authenticated by USAF)", "Multiple corroborating witness accounts"]
+  },
+  {
+    "id": "rendlesham",
+    "year": 1980,
+    "title": "Rendlesham Forest",
+    "location": "Suffolk, UK (near RAF Bentwaters/Woodbridge)",
+    "classification": "UNRESOLVED",
+    "summary": "US Air Force personnel stationed at RAF Bentwaters encountered a triangular craft in Rendlesham Forest over two consecutive nights. Deputy Base Commander Lt. Col. Charles Halt recorded audio during the second encounter and filed an official memo. Radiation readings at the landing site were 10x background.",
+    "witnesses": ["Lt. Col. Charles Halt", "Sgt. Jim Penniston", "Airman John Burroughs", "Multiple USAF personnel"],
+    "evidence": ["Halt memo (FOIA released)", "Audio recording by Halt", "Radiation measurements", "Physical indentations at landing site"]
+  }
+]

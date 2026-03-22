@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+server/data/nuforc-cleaned.json
+server/data/raw/
+*.csv
+.DS_Store
+*.log
+.claude/
