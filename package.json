@@ -12,6 +12,7 @@
     "scrape:nuforc": "node scripts/scrape-nuforc.js",
     "scrape:aaro": "node scripts/scrape-aaro.js",
     "build": "vite build",
+    "start": "NODE_ENV=production node server/index.js",
     "preview": "vite preview"
   },
   "dependencies": {
