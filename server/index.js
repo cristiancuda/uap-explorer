@@ -1,9 +1,9 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { existsSync } from 'fs';
+import { dirname } from 'path';
 import sightingsRouter from './routes/sightings.js';
 import statsRouter from './routes/stats.js';
 import yearlyCountsRouter from './routes/yearlyCounts.js';
@@ -14,17 +14,11 @@ import insightsRouter from './routes/insights.js';
 import chatRouter from './routes/chat.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const isProd = process.env.NODE_ENV === 'production';
-const distPath = join(__dirname, '../dist');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-if (isProd) {
-  app.use(cors());
-} else {
-  app.use(cors({ origin: ['http://localhost:3000', 'http://127.0.0.1:3000'] }));
-}
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/sightings', sightingsRouter);
@@ -38,10 +32,13 @@ app.use('/api/chat', chatRouter);
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
-if (isProd && existsSync(distPath)) {
-  app.use(express.static(distPath));
-  app.get('*', (_, res) => res.sendFile(join(distPath, 'index.html')));
-}
+// Serve React frontend
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// All non-API routes return the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 const server = app.listen(PORT, () => {
   console.log(`UAP Explorer API — http://localhost:${PORT}`);
