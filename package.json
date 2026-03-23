@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "vite --port 3000",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
-    "server": "nodemon server/index.js",
+    "server": "nodemon --ignore server/data/ server/index.js",
+    "download": "python3 scripts/download-data.py",
     "process": "node scripts/process-nuforc.js",
+    "scrape:nuforc": "node scripts/scrape-nuforc.js",
+    "scrape:aaro": "node scripts/scrape-aaro.js",
     "build": "vite build",
     "preview": "vite preview"
   },

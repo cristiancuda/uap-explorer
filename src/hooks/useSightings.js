@@ -37,7 +37,7 @@ export function useSightings(filters = {}) {
       .finally(() => setLoading(false));
 
     return () => controller.abort();
-  }, [filters.shape, filters.decade, filters.country]);
+  }, [filters.shape, filters.decade, filters.country, filters.year]);
 
   return { sightings, loading, error };
 }

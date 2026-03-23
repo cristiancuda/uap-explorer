@@ -15,7 +15,7 @@ const TABS = ['map', 'timeline', 'shapes', 'insights'];
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('map');
-  const [filters, setFilters] = useState({ shape: '', decade: '', country: '' });
+  const [filters, setFilters] = useState({ shape: '', decade: '', country: '', year: '' });
   const [selectedSighting, setSelectedSighting] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatSeed, setChatSeed] = useState('');
@@ -47,7 +47,13 @@ export default function App() {
               onSightingSelect={setSelectedSighting}
             />
           )}
-          {activeTab === 'timeline' && <TimelineView sightings={sightings} />}
+          {activeTab === 'timeline' && (
+            <TimelineView
+              filters={filters}
+              onFiltersChange={setFilters}
+              onSwitchToMap={() => setActiveTab('map')}
+            />
+          )}
           {activeTab === 'shapes' && <ShapesView sightings={sightings} />}
           {activeTab === 'insights' && <InsightsView sightings={sightings} onAskClaude={openChat} />}
         </main>

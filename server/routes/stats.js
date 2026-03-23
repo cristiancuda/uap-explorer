@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { getDataset, datasetExists } from '../lib/dataset.js';
@@ -9,12 +9,28 @@ const aaroCases = JSON.parse(
   readFileSync(join(__dirname, '../data/aaro-cases.json'), 'utf8')
 );
 
+function loadMeta() {
+  const p = join(__dirname, '../data/metadata.json');
+  if (!existsSync(p)) return {};
+  try { return JSON.parse(readFileSync(p, 'utf8')); } catch { return {}; }
+}
+
+function loadAaroScraped() {
+  const p = join(__dirname, '../data/aaro-scraped.json');
+  if (!existsSync(p)) return null;
+  try { return JSON.parse(readFileSync(p, 'utf8')); } catch { return null; }
+}
+
 const router = Router();
 
 router.get('/', (_, res) => {
-  // AARO counts are always available (curated JSON)
-  const aaroCount = aaroCases.length;
+  const meta        = loadMeta();
+  const aaroScraped = loadAaroScraped();
+
+  // Prefer scraped AARO count when available; fall back to curated cases
+  const aaroCount       = aaroScraped?.count ?? aaroCases.length;
   const unresolvedCount = aaroCases.filter((c) => c.classification === 'UNRESOLVED').length;
+  const lastUpdated     = meta.nuforc?.lastUpdated ?? null;
 
   if (!datasetExists()) {
     return res.status(503).json({
@@ -24,6 +40,7 @@ router.get('/', (_, res) => {
       dataSpanYears: null,
       aaroCount,
       unresolvedCount,
+      lastUpdated,
       datasetReady: false,
     });
   }
@@ -37,6 +54,7 @@ router.get('/', (_, res) => {
       dataSpanYears: null,
       aaroCount,
       unresolvedCount,
+      lastUpdated,
       datasetReady: false,
     });
   }
@@ -55,6 +73,7 @@ router.get('/', (_, res) => {
     dataSpanYears: maxYear - minYear,
     aaroCount,
     unresolvedCount,
+    lastUpdated,
     datasetReady: true,
   });
 });

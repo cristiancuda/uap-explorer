@@ -22,8 +22,9 @@ router.get('/', (req, res) => {
     });
   }
 
-  const { shape, decade, country, limit = 50000, offset = 0 } = req.query;
+  const { shape, decade, year, country, limit = 50000, offset = 0 } = req.query;
   const decadeRange = decadeToRange(decade);
+  const yearInt = year ? parseInt(year) : null;
 
   let filtered = data;
 
@@ -32,11 +33,14 @@ router.get('/', (req, res) => {
     filtered = filtered.filter((r) => r.shape?.toLowerCase() === s);
   }
 
-  if (decadeRange) {
+  // year takes precedence over decade when both are set
+  if (yearInt && !isNaN(yearInt)) {
+    filtered = filtered.filter((r) => r.year === yearInt);
+  } else if (decadeRange) {
     const [start, end] = decadeRange;
     filtered = filtered.filter((r) => {
-      const year = r.year || new Date(r.datetime).getFullYear();
-      return year >= start && year <= end;
+      const y = r.year || new Date(r.datetime).getFullYear();
+      return y >= start && y <= end;
     });
   }
 

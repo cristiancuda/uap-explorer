@@ -3,7 +3,10 @@ dist/
 .env
 server/data/nuforc-cleaned.json
 server/data/raw/
+server/data/geocode-cache.json
 *.csv
 .DS_Store
 *.log
+__pycache__/
+*.pyc
 .claude/

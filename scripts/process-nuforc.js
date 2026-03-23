@@ -15,7 +15,7 @@
  *   comments, date posted, latitude, longitude
  */
 
-import { createReadStream, existsSync, mkdirSync, writeFileSync } from 'fs';
+import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { createInterface } from 'readline';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -24,6 +24,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const CSV_PATH = join(__dirname, '../server/data/raw/scrubbed.csv');
 const OUT_PATH = join(__dirname, '../server/data/nuforc-cleaned.json');
 const OUT_DIR = join(__dirname, '../server/data');
+const META_PATH = join(__dirname, '../server/data/metadata.json');
 
 if (!existsSync(CSV_PATH)) {
   console.error(`CSV not found at: ${CSV_PATH}`);
@@ -62,9 +63,25 @@ function parseRow(line) {
   return result;
 }
 
+// Column-name aliases so both CSV variants work:
+//   scrubbed.csv (old Kaggle):  datetime, state, shape, duration (seconds/hours/min), comments
+//   ufo_sighting_data.csv (new): Date_time, state/province, UFO_shape, length_of_encounter_seconds, described_duration_of_encounter, description
+const HEADER_ALIASES = {
+  'date_time':                       'datetime',
+  'state/province':                  'state',
+  'ufo_shape':                       'shape',
+  'length_of_encounter_seconds':     'duration (seconds)',
+  'described_duration_of_encounter': 'duration (hours/min)',
+  'description':                     'comments',
+  'date_documented':                 'date posted',
+};
+
 rl.on('line', (line) => {
   if (!headers) {
-    headers = parseRow(line).map((h) => h.toLowerCase().trim());
+    headers = parseRow(line).map((h) => {
+      const norm = h.toLowerCase().trim();
+      return HEADER_ALIASES[norm] ?? norm;
+    });
     return;
   }
 
@@ -80,8 +97,19 @@ rl.on('line', (line) => {
     return;
   }
 
-  const datetime = get('datetime');
-  const year = parseInt(datetime?.slice(0, 4));
+  const rawDatetime = get('datetime');
+  // Support both ISO (YYYY-MM-DD HH:MM) and US (MM/DD/YYYY HH:MM) formats
+  let datetime = rawDatetime;
+  let year;
+  const isoMatch = rawDatetime?.match(/^(\d{4})[-\/]/);
+  const usMatch  = rawDatetime?.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}:\d{2})/);
+  if (isoMatch) {
+    year = parseInt(isoMatch[1]);
+  } else if (usMatch) {
+    year = parseInt(usMatch[3]);
+    // Normalise to ISO so stored datetimes are consistent
+    datetime = `${usMatch[3]}-${usMatch[1].padStart(2,'0')}-${usMatch[2].padStart(2,'0')} ${usMatch[4]}`;
+  }
   if (!year || year < 1900 || year > 2030) {
     skipped++;
     return;
@@ -116,5 +144,13 @@ rl.on('close', () => {
   writeFileSync(OUT_PATH, JSON.stringify(sightings));
   console.log(`Output written to: ${OUT_PATH}`);
   console.log(`File size: ${(Buffer.byteLength(JSON.stringify(sightings)) / 1024 / 1024).toFixed(1)} MB`);
+
+  // Write metadata so the stats bar can show "last updated"
+  let meta = {};
+  try { meta = JSON.parse(readFileSync(META_PATH, 'utf8')); } catch { /* first run */ }
+  meta.nuforc = { lastUpdated: new Date().toISOString(), source: 'kaggle-csv', count: sightings.length };
+  writeFileSync(META_PATH, JSON.stringify(meta, null, 2));
+  console.log(`Metadata written to: ${META_PATH}`);
+
   console.log('\nDone! Start the server with: npm run server');
 });

@@ -11,6 +11,17 @@ function Stat({ value, label, color }) {
   );
 }
 
+function formatUpdated(iso) {
+  if (!iso) return null;
+  const diff = Date.now() - new Date(iso).getTime();
+  const days = Math.floor(diff / 86_400_000);
+  if (days === 0) return 'updated today';
+  if (days === 1) return 'updated yesterday';
+  if (days < 7)  return `updated ${days}d ago`;
+  const d = new Date(iso);
+  return `updated ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+}
+
 export default function StatsBar({ stats }) {
   const total = stats?.total != null ? stats.total.toLocaleString() : null;
   const aaroCount = stats?.aaroCount != null ? stats.aaroCount.toLocaleString() : null;
@@ -19,6 +30,7 @@ export default function StatsBar({ stats }) {
     stats?.minYear != null && stats?.maxYear != null
       ? `${stats.maxYear - stats.minYear}yr`
       : null;
+  const updated = formatUpdated(stats?.lastUpdated);
 
   return (
     <div
@@ -32,6 +44,11 @@ export default function StatsBar({ stats }) {
       <Stat value={aaroCount} label="AARO featured cases" color="var(--amber)" />
       <Stat value={unresolved} label="unresolved" color="var(--coral)" />
       <Stat value={dataSpan} label="data span" color="var(--text-secondary)" />
+      {updated && (
+        <span className="ml-auto text-xs" style={{ color: 'var(--text-muted)' }}>
+          {updated}
+        </span>
+      )}
     </div>
   );
 }
