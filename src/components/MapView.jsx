@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet.markercluster';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 // Shape → color mapping using design system tokens
 const SHAPE_COLORS = {
@@ -217,7 +217,7 @@ export default function MapView({ sightings, loading, error, filters, onFiltersC
       return;
     }
 
-    fetch(`${API_BASE}/api/military-bases`)
+    fetch(`${API_BASE}/military-bases`)
       .then((res) => res.json())
       .then((data) => {
         const bases = data.bases || [];

@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, Cell,
 } from 'recharts';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 const TAG_COLORS = {
   military:      '#f87171',
@@ -92,11 +92,11 @@ export default function TimelineView({ filters = {}, onFiltersChange, onSwitchTo
 
   useEffect(() => {
     Promise.all([
-      fetch(`${API_BASE}/api/yearly-counts`).then((r) => {
+      fetch(`${API_BASE}/yearly-counts`).then((r) => {
         if (!r.ok) throw new Error(`yearly-counts ${r.status}`);
         return r.json();
       }),
-      fetch(`${API_BASE}/api/timeline`).then((r) => {
+      fetch(`${API_BASE}/timeline`).then((r) => {
         if (!r.ok) throw new Error(`timeline ${r.status}`);
         return r.json();
       }),

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export function useSightings(filters = {}) {
   const [sightings, setSightings] = useState([]);
@@ -20,7 +20,7 @@ export function useSightings(filters = {}) {
       Object.entries(filters).filter(([, v]) => v)
     );
 
-    fetch(`${API_BASE}/api/sightings?${params}`, { signal: controller.signal })
+    fetch(`${API_BASE}/sightings?${params}`, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error(`API ${res.status}`);
         return res.json();
