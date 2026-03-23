@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite --port 3000",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
+    "preserver": "lsof -ti :3001 | xargs kill -9 2>/dev/null; exit 0",
     "server": "nodemon --ignore server/data/ server/index.js",
     "download": "python3 scripts/download-data.py",
     "process": "node scripts/process-nuforc.js",
